@@ -28,6 +28,8 @@ export default class CsvDb {
             return this._openPromise;
         }
 
+        console.time('[open]');
+
         if (this._schema) {
             this._tables = Object.keys(this._schema).reduce((all, name) => {
                 all[name] = new Table(name, this._schema[name], FileIO);
@@ -49,7 +51,10 @@ export default class CsvDb {
             return Promise.reject('No tables specified');
         }
         
-        return Promise.all(Object.keys(this._tables).map(name => this._tables[name].read()));
+        return Promise.all(Object.keys(this._tables).map(name => this._tables[name].read())).then(res => {
+            console.timeEnd('[open]');
+            return res;
+        });
     }
 
     query(sql, params) {

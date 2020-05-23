@@ -35,8 +35,12 @@ let db = new DB({
 // db.query('select count(*) as all, count(distinct id) as wut from one').then(render).catch(error);
 // db.query('select one.id, one.name from one, two where one.id=two.id order by one.name desc').then(render).catch(error);
 // db.query('select id, avg(id), count(*) from one where id < 5 group by id').then(render).catch(error);
-db.query('select 1 as one, * from one order by id * 1 desc limit 3').then(render).catch(error);
+// db.query('select 1 as one, * from one order by id * 1 desc limit 3').then(render).catch(error);
 // db.query('select OBJECTID, count(*) from three group by OBJECTID having count(*) > 1 order by OBJECTID * 1').then(render).catch(error);
+// db.query('select b\'0100\'').then(render).catch(error);
+
+process.argv[2] = "select if(id = 1, 'YES', 'NO') from one";
+db.query(process.argv[2]).then(render).catch(error);
 
 function render(result) {
     let longest = result.columns.map(c => c.length);
