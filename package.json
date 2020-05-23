@@ -1,0 +1,12 @@
+{
+    "name": "slow-sql",
+    "description": "SQL engine for node",
+    "version": "0.0.1",
+    "main": "index.js",
+    "scripts": {
+    },
+    "type": "module",
+    "keywords": [],
+    "author": "Mykola Matkovski",
+    "license": "ISC"
+}
