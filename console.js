@@ -1,4 +1,5 @@
 import DB from './index.js';
+import readline from 'readline';
 
 let db = new DB({
     one: {
@@ -16,7 +17,7 @@ let db = new DB({
         separator: ',',
         columns: [
             { name: 'id', type: 'int' },
-            { name: 'name1', type: 'varchar(255)' }
+            { name: 'name', type: 'varchar(255)' }
         ]
     },
     three: {
@@ -27,7 +28,7 @@ let db = new DB({
 });
 
 // db.query('select la, bla, "wut" as something, id = name from one, two where one = two and id in (select id from two)').then(render).catch(error);
-// db.query('select one.id from one, two where one.id <> two.id').then(render).catch(error);
+// db.query('select id from one, two where one.id <> two.id').then(render).catch(error);
 // db.query('select * from one where id = (select id from two where name="twelve")').then(render).catch(error);
 // db.query('select id as something from one where name = "one"').then(render).catch(error);
 // db.query('select * from one, two where one.id = two.id').then(render).catch(error);
@@ -38,10 +39,27 @@ let db = new DB({
 // db.query('select 1 as one, * from one order by id * 1 desc limit 3').then(render).catch(error);
 // db.query('select OBJECTID, count(*) from three group by OBJECTID having count(*) > 1 order by OBJECTID * 1').then(render).catch(error);
 // db.query('select b\'0100\'').then(render).catch(error);
-db.query('select * from two right join one on one.id = two.id where name <> "three"').then(render).catch(error);
 
-// process.argv[2] = process.argv[2] || 'select * from one left join two on one.id = two.id where one.name = "wut"';
-// db.query(process.argv[2]).then(render).catch(error);
+let buffer = '';
+
+readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+}).on('line', function (line) {
+    if (line.trim().endsWith(';')) {
+        line = buffer + line;
+        buffer = '';
+        line = line.replace(/\s+$/, '');
+        line = line.replace(/;$/, '');
+        db.query(line).then(render).catch(error).finally(() => process.stdout.write('> '));
+    } else {
+        buffer += line;
+        process.stdout.write('> ');
+    }
+})
+
+process.stdout.write('> ')
 
 function render(result) {
     let longest = result.columns.map(c => c.length);
@@ -61,5 +79,6 @@ function render(result) {
 }
 
 function error(msg) {
+    // console.log('ERROR:', msg.message);
     console.log('ERROR:', msg.message, '\n', msg.stack);
 }

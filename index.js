@@ -1,5 +1,5 @@
 import Query from './lib/query.js';
-import Table from './lib/table.js';
+import Table from './lib/table/file.js';
 import FileIO from './lib/io/file.js';
 
 

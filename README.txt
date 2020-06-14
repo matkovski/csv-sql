@@ -1,7 +1,16 @@
 TODO:
     - SQL
+        - support proper data types (select 0 + id should be number addition)
         - support all sorts of joins
         - support over_clause for aggregates
+        - support union
     - General
+        - detect data types and use them right (e.g. order by id desc - id is a number, and sorting should respect numbers)
         - support browser mode and probably some other ways of io
         - support charcodes other than UTF8 
+- Unsupported (and not planned)
+    - partitions
+    - transactions
+    - nested joins
+- Naturally not supported
+    - indexes
