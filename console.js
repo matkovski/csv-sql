@@ -26,7 +26,14 @@ import readline from 'readline';
 //         separator: ',',
 //     }
 // });
-let db = new DB(['./data/NDHUB.AirportRunways.csv'], true, ',');
+// let db = new DB(['./data/NDHUB.AirportRunways.csv'], true, ',');
+let db = DB.array([
+    ['1', 'John'],
+    ['2', 'Michael'],
+    ['3', 'Paolo'],
+    ['4', 'George'],
+    ['5', 'Thomas'],
+]);
 
 // db.query('select la, bla, "wut" as something, id = name from one, two where one = two and id in (select id from two)').then(render).catch(error);
 // db.query('select id from one, two where one.id <> two.id').then(render).catch(error);
