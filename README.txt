@@ -1,7 +1,12 @@
 TODO:
     - SQL
+        - NOT IN
+        - NOT LIKE
+        - NOT other uses?
+        - IS (is null, is not null, what else)
+        - ANY, SOME (subquery)
+        - comments?
         - support proper data types (select 0 + id should be number addition)
-        - support all sorts of joins
         - support over_clause for aggregates
         - support union
     - General
@@ -12,5 +17,8 @@ TODO:
     - partitions
     - transactions
     - nested joins
-- Naturally not supported
     - indexes
+- Naturally not supported
+
+
+BUGS

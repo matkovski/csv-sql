@@ -1,31 +1,32 @@
 import DB from './index.js';
 import readline from 'readline';
 
-let db = new DB({
-    one: {
-        file: './test/one.csv',
-        headers: true,
-        separator: ',',
-        columns: [
-            { name: 'id', type: 'int' },
-            { name: 'name', type: 'varchar(255)' }
-        ]
-    },
-    two: {
-        file: './test/two.csv',
-        headers: true,
-        separator: ',',
-        columns: [
-            { name: 'id', type: 'int' },
-            { name: 'name', type: 'varchar(255)' }
-        ]
-    },
-    three: {
-        file: './test/NDHUB.AirportRunways.csv',
-        headers: true,
-        separator: ',',
-    }
-});
+// let db = new DB({
+//     one: {
+//         file: './data/one.csv',
+//         headers: true,
+//         separator: ',',
+//         columns: [
+//             { name: 'id', type: 'int' },
+//             { name: 'name', type: 'varchar(255)' }
+//         ]
+//     },
+//     two: {
+//         file: './data/two.csv',
+//         headers: true,
+//         separator: ',',
+//         columns: [
+//             { name: 'id', type: 'int' },
+//             { name: 'name', type: 'varchar(255)' }
+//         ]
+//     },
+//     three: {
+//         file: './data/NDHUB.AirportRunways.csv',
+//         headers: true,
+//         separator: ',',
+//     }
+// });
+let db = new DB(['./data/NDHUB.AirportRunways.csv'], true, ',');
 
 // db.query('select la, bla, "wut" as something, id = name from one, two where one = two and id in (select id from two)').then(render).catch(error);
 // db.query('select id from one, two where one.id <> two.id').then(render).catch(error);

@@ -2,7 +2,7 @@ import DB from './index.js';
 
 let db = new DB({
     one: {
-        file: './test/one.csv',
+        file: './data/one.csv',
         headers: true,
         separator: ',',
         columns: [
@@ -11,7 +11,7 @@ let db = new DB({
         ]
     },
     two: {
-        file: './test/two.csv',
+        file: './data/two.csv',
         headers: true,
         separator: ',',
         columns: [
@@ -20,7 +20,7 @@ let db = new DB({
         ]
     },
     three: {
-        file: './test/NDHUB.AirportRunways.csv',
+        file: './data/NDHUB.AirportRunways.csv',
         headers: true,
         separator: ',',
     }
@@ -38,7 +38,13 @@ let db = new DB({
 // db.query('select 1 as one, * from one order by id * 1 desc limit 3').then(render).catch(error);
 // db.query('select OBJECTID, count(*) from three group by OBJECTID having count(*) > 1 order by OBJECTID * 1').then(render).catch(error);
 // db.query('select b\'0100\'').then(render).catch(error);
-db.query('select * from two right join one on one.id = two.id where name <> "three"').then(render).catch(error);
+// db.query('select * from two right join one on one.id = two.id where name <> "three"').then(render).catch(error);
+db.query('select * from one where (select min(id) from two) in (id)').then(render).catch(error);
+// db.query('select id, concat(id, "") in ("1", "2", "3") from one').then(render).catch(error);
+// db.query('select (select 1)').then(render).catch(error);
+// db.query('select * from one').then(render).catch(error);
+
+
 
 // process.argv[2] = process.argv[2] || 'select * from one left join two on one.id = two.id where one.name = "wut"';
 // db.query(process.argv[2]).then(render).catch(error);
