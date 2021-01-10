@@ -18,6 +18,7 @@ TODO:
     - transactions
     - nested joins
     - indexes
+    - order by 2
 - Naturally not supported
 
 
