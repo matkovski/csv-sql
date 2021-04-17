@@ -39,7 +39,7 @@ let db = new DB({
 // db.query('select OBJECTID, count(*) from three group by OBJECTID having count(*) > 1 order by OBJECTID * 1').then(render).catch(error);
 // db.query('select b\'0100\'').then(render).catch(error);
 // db.query('select * from two right join one on one.id = two.id where name <> "three"').then(render).catch(error);
-db.query('select * from one where (select min(id) from two) in (id)').then(render).catch(error);
+// db.query('select * from one where (select min(id) from two) in (id)').then(render).catch(error);
 // db.query('select id, concat(id, "") in ("1", "2", "3") from one').then(render).catch(error);
 // db.query('select (select 1)').then(render).catch(error);
 // db.query('select * from one').then(render).catch(error);

@@ -1,12 +1,22 @@
 {
-    "name": "slow-sql",
-    "description": "SQL engine for node",
-    "version": "0.0.1",
-    "main": "index.js",
-    "scripts": {
-    },
-    "type": "module",
-    "keywords": [],
-    "author": "Mykola Matkovski",
-    "license": "ISC"
+  "name": "slow-sql",
+  "description": "SQL engine for node",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/jest/bin/jest.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Mykola Matkovski",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "26.6.3"
+  },
+  "dependencies": {},
+  "jest": {
+    "verbose": true,
+    "testMatch": ["**/*.test.js"],
+    "transform": {}
+  }
 }
