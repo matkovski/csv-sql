@@ -1,3 +1,9 @@
+Features:
+ - storage:
+   - read from a string
+   - read from csv
+   - read from json, detect schema
+
 TODO:
     - SQL
         - NOT IN
